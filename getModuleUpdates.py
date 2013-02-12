@@ -46,20 +46,24 @@ def handler(req):
     return apache.OK
 
 def get_git_tags(oauth_token,req,repo_user,repo_id,core_version_filter):
-    releases_to_build=[]
-    g = Github(oauth_token)
-    tags=g.get_user(repo_user).get_repo(repo_id).get_tags()
-    for cur_tag in tags:
-        if core_version_filter in cur_tag.name:
-            releases_to_build.append(
-            {
-             'name' : cur_tag.name,
-             'commit' : cur_tag.commit.sha,
-             'date' : cur_tag.commit.commit.author.date,
-             'tarball' : cur_tag.tarball_url,
-            }
-            )
-    return releases_to_build
+    try:
+        releases_to_build=[]
+        g = Github(oauth_token)
+        tags=g.get_user(repo_user).get_repo(repo_id).get_tags()
+        for cur_tag in tags:
+            if core_version_filter in cur_tag.name:
+                releases_to_build.append(
+                {
+                 'name' : cur_tag.name,
+                 'commit' : cur_tag.commit.sha,
+                 'date' : cur_tag.commit.commit.author.date,
+                 'tarball' : cur_tag.tarball_url,
+                }
+                )
+        return releases_to_build
+    except:
+        req.write('Error communicating with GitHub!')
+        return False
 
 def build_project_xml(releases_to_build,project_id,core_version):
     latest_release_string=get_most_recent_tag(releases_to_build)
