@@ -34,11 +34,10 @@ def handler(req):
                                     )
                        )
     if projects_to_build:
-        projects_to_build_sorted = sorted(projects_to_build, key=lambda k: k['name'], reverse=True) 
         req.content_type = 'text/xml'
         req.write(
                   build_project_xml(
-                          projects_to_build_sorted,
+                          sorted(projects_to_build, key=lambda k: k['name'], reverse=True),
                           repo_id,
                           core_version)
                   )
