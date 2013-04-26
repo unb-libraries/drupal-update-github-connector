@@ -47,7 +47,7 @@ def handler(req):
 def get_git_tags(oauth_token,req,repo_user,repo_id,core_version_filter):
     try:
         releases_to_build=[]
-        g = Github(oauth_token)
+        g = Github(oauth_token,user_agent='Drupal Update Github Connector')
         tags=g.get_user(repo_user).get_repo(repo_id).get_tags()
         for cur_tag in tags:
             if core_version_filter in cur_tag.name:
