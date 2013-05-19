@@ -1,4 +1,5 @@
 AddHandler mod_python .py
 PythonHandler getModuleUpdates
 RewriteEngine On
-RewriteRule ^(.*)/(.*)$ updates/getModuleUpdates.py?p=$1&c=$2  [L,QSA]
+RewriteBase /updates/
+RewriteRule ^(.*)/(.*)$ getModuleUpdates.py?p=$1&c=$2  [L,QSA]
