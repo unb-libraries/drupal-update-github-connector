@@ -5,7 +5,7 @@ Web endpoint to permit non-contrib Drupal modules to query for available updates
 ### Endpoint Setup
 +   Ensure that python is parsed by your webserver : we use mod_python for apache2.
 +   Update RewriteBase in .htaccess to reflect your deployment point
-+   Copy githubOrgConfiguration.py.example to githubOrgConfiguration.py and populate values.
++   Copy githubOrgConfiguration.py.example to githubOrgConfiguration.py and populate values. Info on generating an OAuth token is covered elsewhere (https://help.github.com/articles/creating-an-oauth-token-for-command-line-use)
 
 ### Custom Module Configuration
 Ensure the following settings are defined in your module.info:
