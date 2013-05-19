@@ -1,12 +1,13 @@
-# Drupal update github connector.
-Web endpoint to permit Drupal modules to query updates from github directly.
+# Drupal module update github connector
+Web endpoint to permit non-contrib Drupal modules to query for available updates from github repositories.
 
 ## Setup
-## Endpoint Setup
-Ensure this runs in your web daemon : we use mod_python for apache2.
-Copy githubOrgConfiguration.py.example to githubOrgConfiguration.py and populate values.
+### Endpoint Setup
++   Ensure that python is parsed by your webserver : we use mod_python for apache2.
++   Update RewriteBase in .htaccess to reflect your deployment point
++   Copy githubOrgConfiguration.py.example to githubOrgConfiguration.py and populate values.
 
-## Custom Module Configuration
+### Custom Module Configuration
 Ensure the following settings are defined in your module.info:
 +   project = project_machine_name_with_underscores
 +   core = 8.x/7.x/6.x
