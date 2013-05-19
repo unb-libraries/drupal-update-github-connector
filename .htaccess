@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^(.*)/(.*)$ updates/getModuleUpdates.py?p=$1&c=$2  [L,QSA]
