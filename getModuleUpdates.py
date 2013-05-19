@@ -3,6 +3,7 @@
 """
 
 from github import Github
+import githubOrgConfiguration as configValues
 from lxml import etree
 from mod_python import apache
 from re import search
@@ -17,18 +18,16 @@ __status__ = "Production"
 
 
 def handler(req):
-    repo_user='unb-libraries'
     url_queries= dict(
                       parse_qsl(req.subprocess_env['QUERY_STRING'])
                       )
     repo_id=url_queries['p']
     core_version=url_queries['c']
-    oauth_token=url_queries['o']
     projects_to_build=(
                        get_git_tags(
-                                    oauth_token,
+                                    configValues.oauth_token,
                                     req,
-                                    repo_user,
+                                    configValues.repo_user,
                                     repo_id,
                                     core_version
                                     )
