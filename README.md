@@ -17,7 +17,7 @@ Ensure the following settings are defined in your module.info:
 ## Development Requirements
 +   project name and github repository name must be exactly the same.
 +   Modules must be developed in a branch named exactly the same as the 'core' string in the .info file.
-+   Tags for releases must be exactly the same as the version string in the .info file.
++   You MUST tag commits appropriately for this to work. Commit tags must be exactly the same as the version string in the .info file.
 
 ## Dependencies :
 +   pygithub
